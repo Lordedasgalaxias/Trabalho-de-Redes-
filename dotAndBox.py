@@ -21,7 +21,7 @@ class Tabuleiro:
 
         fez = 0
 
-        simbolo = jogador 
+        simbolo = jogador[0] 
         
         # Linhas horizontais
         if i % 2 == 0 and j % 2 != 0:

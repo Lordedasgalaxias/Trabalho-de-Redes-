@@ -70,6 +70,13 @@ class gamer:
             for x in dados["movimentos"]
         )
 
+        self.tabuleiro.box = {
+
+            tuple(map(int, k.split(","))): v
+
+            for k, v in dados["box"].items()
+        }
+
         
 
     def jogar(self):
@@ -92,7 +99,6 @@ class gamer:
 
             dados = json.loads(mensagem)
 
-            # ---------------- CONFIG ----------------
 
             if dados["tipo"] == "config":
 
@@ -102,7 +108,6 @@ class gamer:
 
                 print(f"\nTabuleiro {N}x{N} criado!\n")
 
-            # ---------------- ESTADO ----------------
 
             elif dados["tipo"] == "estado":
 
@@ -110,7 +115,7 @@ class gamer:
 
 
 
-            elif dados["tipo"] == "sua_vez" or "erro":
+            elif dados["tipo"] in ["sua_vez", "erro"]:
                 if (dados["tipo"] == "erro"):
                     print("jogada invalida")
 
@@ -131,7 +136,7 @@ class gamer:
                 msg = {
 
                     "tipo": "movimento",
-                    "name": self.nome[0],
+                    "name": self.nome,
                     
                     "i1": i1,
                     "j1": j1,

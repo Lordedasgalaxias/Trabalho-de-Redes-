@@ -67,7 +67,7 @@ class Server:
                 "tipo": "sua_vez"
             }))
 
-    def processarJogada(self, dados, jogador):
+    def processarJogada(self, dados, nome):
 
         nome = dados["name"]
         i1 = dados["i1"]
