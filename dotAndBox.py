@@ -21,17 +21,20 @@ class Tabuleiro:
 
         fez = 0
 
+        simbolo = jogador 
+        
         # Linhas horizontais
         if i % 2 == 0 and j % 2 != 0:
             # Box acima
             if i - 1 > 0:
                 if existe(i-2, j) and existe(i-1, j-1) and existe(i-1, j+1):
-                    self.box[(i-1, j)] = jogador
+                    self.box[(i-1, j)] = simbolo
                     fez += 1
+
             # Box abaixo
             if i + 1 < self.size:
                 if existe(i+2, j) and existe(i+1, j-1) and existe(i+1, j+1):
-                    self.box[(i+1, j)] = jogador
+                    self.box[(i+1, j)] = simbolo
                     fez += 1
 
         # Linhas verticais
@@ -39,57 +42,17 @@ class Tabuleiro:
             # Box à esquerda
             if j - 1 > 0:
                 if existe(i, j-2) and existe(i-1, j-1) and existe(i+1, j-1):
-                    self.box[(i, j-1)] = jogador
+                    self.box[(i, j-1)] = simbolo
                     fez += 1
+
             # Box à direita
             if j + 1 < self.size:
                 if existe(i, j+2) and existe(i-1, j+1) and existe(i+1, j+1):
-                    self.box[(i, j+1)] = jogador
+                    self.box[(i, j+1)] = simbolo
                     fez += 1
 
         return fez
-"""
-    def printTabuleiro(self):
-        print("Tabuleiro:")
-
-        # Criar grid vazio
-        grid = [[" " for _ in range(self.size)] for _ in range(self.size)]
-
-        # Pontos
-        for i in range(0, self.size, 2):
-            for j in range(0, self.size, 2):
-                grid[i][j] = "+"
-
-        # Movimentos (linhas)
-        for (i, j) in self.movimentos:
-            if i % 2 == 0:
-                grid[i][j] = "-"
-            else:
-                grid[i][j] = "|"
-
-        # Boxes preenchidas
-        for (i, j), jogador in self.box.items():
-            grid[i][j] = jogador
-
-        # Print cabeçalho
-        print("   ", end="")
-        for col in range(1, self.N + 2):
-            print(f"{col}  ", end=" ")
-        print()
-
-        # Print linhas
-        linha_num = 1
-        for i in range(self.size):
-            if i % 2 == 0:
-                print(f"{linha_num:2} ", end="")
-                linha_num += 1
-            else:
-                print("   ", end="")
-
-            for j in range(self.size):
-                print(grid[i][j], end=" ")
-            print()
-"""
+    
     def validaPos(self, linha, coluna):
         if not (1 <= linha <= self.N + 1 and 1 <= coluna <= self.N + 1):
             return False
@@ -114,26 +77,5 @@ class Tabuleiro:
         self.jogadas -= 1
 
         if fez > 0:
-            return 1, self.jogadas
-        return 0, self.jogadas
-
-"""
-    def jogar(self, jogador):
-        while True:
-            try:
-                i1, j1 = map(int, input("Digite a origem (linha coluna): ").split())
-                i2, j2 = map(int, input("Digite o destino (linha coluna): ").split())
-            except:
-                print("Entrada inválida! Use dois números separados por espaço.")
-                continue
-
-                ## tá muito confuso esse if 
-                
-            if (self.validaPos(i1, j1) and self.validaPos(i2, j2) and
-                ((i1 == i2 and abs(j1 - j2) == 1) or (j1 == j2 and abs(i1 - i2) == 1))):
-                return self.gravarJogada(i1, j1, i2, j2, jogador)
-            else:
-                print("Jogada inválida! Tente novamente.")
-    """
-
-
+            return 1
+        return 0

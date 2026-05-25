@@ -1,21 +1,21 @@
-from Jogador import jogador
-
-def main(): 
-    selection = input("\n 1-Criar Partida\n 2-Entrar em uma partida ")
-    
-    match selection:
-        case 1:
-            createGame()
-        case 2:
-            enterGame()
-    
-# N = table -1 
-def createGame():
-    table = int(input("qual tamanho de jogo você quer ?"))
-        
-    
-def enterGame():
+from Servidor import Server
+from Jogador import gamer
 
 
-if __name__ == '__main__':
-    main()
+modo = input(
+    "Digite s para servidor ou c para cliente: "
+)
+ 
+if modo == "s":
+
+    N = int(input("Tamanho do jogo: "))
+
+    s = Server(N)
+
+    s.iniciar()
+
+else:
+
+    j = gamer()
+
+    j.jogar()
