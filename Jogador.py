@@ -88,7 +88,7 @@ class gamer:
 
                 continue
 
-            print("Recebido:", mensagem)
+            # print("Recebido:", mensagem)
 
             dados = json.loads(mensagem)
 
@@ -108,7 +108,6 @@ class gamer:
 
                 self.aplicarEstado(mensagem)
 
-                self.tabuleiro.printTabuleiro()
 
 
             elif dados["tipo"] == "sua_vez" or "erro":
@@ -128,12 +127,7 @@ class gamer:
                     int,
                     input("Destino (i j): ").split()
                 )
-                i1 -= 1
-                j1 -= 1
-
-                i2 -= 1
-                j2 -= 1
-                
+              
                 msg = {
 
                     "tipo": "movimento",

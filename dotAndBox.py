@@ -59,9 +59,10 @@ class Tabuleiro:
         return True
 
     def gravarJogada(self, i1, j1, i2, j2, jogador):
-        # Converter coordenadas do usuário para grid interno
+
         i1_grid = (i1 - 1) * 2
         j1_grid = (j1 - 1) * 2
+
         i2_grid = (i2 - 1) * 2
         j2_grid = (j2 - 1) * 2
 
@@ -69,13 +70,19 @@ class Tabuleiro:
         j_mov = (j1_grid + j2_grid) // 2
 
         if (i_mov, j_mov) in self.movimentos:
+
             print("Já foi jogado!")
-            return 0, self.jogadas
+
+            return False
 
         self.adicionarMovimento(i_mov, j_mov)
-        fez = self.verificarBox(i_mov, j_mov, jogador)
+
+        self.verificarBox(
+            i_mov,
+            j_mov,
+            jogador
+        )
+
         self.jogadas -= 1
 
-        if fez > 0:
-            return 1
-        return 0
+        return True

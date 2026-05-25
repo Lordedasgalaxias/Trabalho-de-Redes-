@@ -69,17 +69,25 @@ class Server:
 
     def processarJogada(self, dados, jogador):
 
+        nome = dados["name"]
         i1 = dados["i1"]
         j1 = dados["j1"]
 
         i2 = dados["i2"]
         j2 = dados["j2"]
 
+        
+        
+        print(i1, j1, i2, j2)
+        
         adjacente = (
             abs(i1 - i2) +
             abs(j1 - j2)
         ) == 1
-
+        
+        print("Adjacente:", adjacente)
+        
+        
         if not adjacente:
             return False
 
@@ -88,7 +96,7 @@ class Server:
             j1,
             i2,
             j2,
-            jogador
+            nome
         )
 
     def gerarEstado(self, vez):
