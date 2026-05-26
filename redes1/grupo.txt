@@ -1,0 +1,26 @@
+Grupo de Redes 
+Augusto Aragao 
+Joao Diesel 
+
+Jogo 
+
+Dot and box, consiste em formar quadrados a partir de traços entre pontos já delimitado.
+A estrutura do Jogo está em Jogadores(clients) se comunicando com um servidor central, que adiministra e coordena as jogadas. 
+
+
+mensagens do Jogador é enviado como json, assim como permitido pelo professor em sala de aula. 
+Sendo enviado os dados : 
+nome, i1,j1. i2,j2 onde i e j são as jogadas feita pelo jogador 
+
+Mensagens do Servidor 
+o servidor envia mensagem de 
+"tipo": "estado",
+    "movimentos": [...],
+    "box": [...],
+    "vez": None
+}
+
+onde o estado pode ser : 
+- "config" o qual  encaminha o tamanho do jogo para todos os jogadores 
+- "sua vez" a qual informa de quem é a vez de jogar 
+- "estado" o qual envia o movimento feito e validado do servidor 
